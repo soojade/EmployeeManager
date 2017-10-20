@@ -23,11 +23,12 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbEmployeeEdit = new System.Windows.Forms.GroupBox();
+            this.btnEditPhotoAdd = new System.Windows.Forms.Button();
             this.dtpEditBDay = new System.Windows.Forms.DateTimePicker();
             this.rbtnEditWoman = new System.Windows.Forms.RadioButton();
             this.rbtnEditMan = new System.Windows.Forms.RadioButton();
@@ -43,6 +44,12 @@
             this.tbEditId = new System.Windows.Forms.TextBox();
             this.lbEditId = new System.Windows.Forms.Label();
             this.dgvEmployeeShow = new System.Windows.Forms.DataGridView();
+            this.EId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EBDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EAddr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lbQueryId = new System.Windows.Forms.Label();
             this.tbQueryId = new System.Windows.Forms.TextBox();
@@ -54,12 +61,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbEmployeeEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeShow)).BeginInit();
@@ -72,7 +73,6 @@
             this.gbEmployeeEdit.Controls.Add(this.dtpEditBDay);
             this.gbEmployeeEdit.Controls.Add(this.rbtnEditWoman);
             this.gbEmployeeEdit.Controls.Add(this.rbtnEditMan);
-            this.gbEmployeeEdit.Controls.Add(this.pbEditPhoto);
             this.gbEmployeeEdit.Controls.Add(this.tbEditAddr);
             this.gbEmployeeEdit.Controls.Add(this.lbEditAddr);
             this.gbEmployeeEdit.Controls.Add(this.lbEditBDay);
@@ -83,27 +83,41 @@
             this.gbEmployeeEdit.Controls.Add(this.lbEditName);
             this.gbEmployeeEdit.Controls.Add(this.tbEditId);
             this.gbEmployeeEdit.Controls.Add(this.lbEditId);
+            this.gbEmployeeEdit.Controls.Add(this.btnEditPhotoAdd);
+            this.gbEmployeeEdit.Controls.Add(this.pbEditPhoto);
+            this.gbEmployeeEdit.Enabled = false;
             this.gbEmployeeEdit.Location = new System.Drawing.Point(12, 1);
             this.gbEmployeeEdit.Name = "gbEmployeeEdit";
-            this.gbEmployeeEdit.Size = new System.Drawing.Size(587, 172);
+            this.gbEmployeeEdit.Size = new System.Drawing.Size(779, 172);
             this.gbEmployeeEdit.TabIndex = 0;
             this.gbEmployeeEdit.TabStop = false;
             this.gbEmployeeEdit.Text = "员工信息";
+            // 
+            // btnEditPhotoAdd
+            // 
+            this.btnEditPhotoAdd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnEditPhotoAdd.Location = new System.Drawing.Point(588, 52);
+            this.btnEditPhotoAdd.Name = "btnEditPhotoAdd";
+            this.btnEditPhotoAdd.Size = new System.Drawing.Size(28, 81);
+            this.btnEditPhotoAdd.TabIndex = 7;
+            this.btnEditPhotoAdd.Text = "添加照片";
+            this.btnEditPhotoAdd.UseVisualStyleBackColor = true;
+            this.btnEditPhotoAdd.Click += new System.EventHandler(this.btnEditPhotoAdd_Click);
             // 
             // dtpEditBDay
             // 
             this.dtpEditBDay.CalendarMonthBackground = System.Drawing.Color.Transparent;
             this.dtpEditBDay.CalendarTitleBackColor = System.Drawing.Color.Transparent;
             this.dtpEditBDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEditBDay.Location = new System.Drawing.Point(89, 136);
+            this.dtpEditBDay.Location = new System.Drawing.Point(100, 136);
             this.dtpEditBDay.Name = "dtpEditBDay";
-            this.dtpEditBDay.Size = new System.Drawing.Size(112, 26);
-            this.dtpEditBDay.TabIndex = 4;
+            this.dtpEditBDay.Size = new System.Drawing.Size(101, 26);
+            this.dtpEditBDay.TabIndex = 5;
             // 
             // rbtnEditWoman
             // 
             this.rbtnEditWoman.AutoSize = true;
-            this.rbtnEditWoman.Location = new System.Drawing.Point(415, 81);
+            this.rbtnEditWoman.Location = new System.Drawing.Point(160, 79);
             this.rbtnEditWoman.Name = "rbtnEditWoman";
             this.rbtnEditWoman.Size = new System.Drawing.Size(41, 24);
             this.rbtnEditWoman.TabIndex = 3;
@@ -114,7 +128,7 @@
             // rbtnEditMan
             // 
             this.rbtnEditMan.AutoSize = true;
-            this.rbtnEditMan.Location = new System.Drawing.Point(304, 81);
+            this.rbtnEditMan.Location = new System.Drawing.Point(75, 81);
             this.rbtnEditMan.Name = "rbtnEditMan";
             this.rbtnEditMan.Size = new System.Drawing.Size(41, 24);
             this.rbtnEditMan.TabIndex = 3;
@@ -124,10 +138,11 @@
             // 
             // pbEditPhoto
             // 
+            this.pbEditPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbEditPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbEditPhoto.Location = new System.Drawing.Point(475, 19);
+            this.pbEditPhoto.Location = new System.Drawing.Point(482, 15);
             this.pbEditPhoto.Name = "pbEditPhoto";
-            this.pbEditPhoto.Size = new System.Drawing.Size(91, 143);
+            this.pbEditPhoto.Size = new System.Drawing.Size(106, 147);
             this.pbEditPhoto.TabIndex = 2;
             this.pbEditPhoto.TabStop = false;
             // 
@@ -137,7 +152,7 @@
             this.tbEditAddr.Location = new System.Drawing.Point(304, 136);
             this.tbEditAddr.Name = "tbEditAddr";
             this.tbEditAddr.Size = new System.Drawing.Size(152, 26);
-            this.tbEditAddr.TabIndex = 1;
+            this.tbEditAddr.TabIndex = 6;
             // 
             // lbEditAddr
             // 
@@ -160,7 +175,7 @@
             // lbEditSex
             // 
             this.lbEditSex.AutoSize = true;
-            this.lbEditSex.Location = new System.Drawing.Point(246, 85);
+            this.lbEditSex.Location = new System.Drawing.Point(17, 85);
             this.lbEditSex.Name = "lbEditSex";
             this.lbEditSex.Size = new System.Drawing.Size(51, 20);
             this.lbEditSex.TabIndex = 0;
@@ -169,15 +184,15 @@
             // tbEditPhone
             // 
             this.tbEditPhone.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tbEditPhone.Location = new System.Drawing.Point(73, 80);
+            this.tbEditPhone.Location = new System.Drawing.Point(304, 79);
             this.tbEditPhone.Name = "tbEditPhone";
-            this.tbEditPhone.Size = new System.Drawing.Size(128, 26);
-            this.tbEditPhone.TabIndex = 1;
+            this.tbEditPhone.Size = new System.Drawing.Size(152, 26);
+            this.tbEditPhone.TabIndex = 4;
             // 
             // lbEditPhone
             // 
             this.lbEditPhone.AutoSize = true;
-            this.lbEditPhone.Location = new System.Drawing.Point(17, 85);
+            this.lbEditPhone.Location = new System.Drawing.Point(248, 84);
             this.lbEditPhone.Name = "lbEditPhone";
             this.lbEditPhone.Size = new System.Drawing.Size(51, 20);
             this.lbEditPhone.TabIndex = 0;
@@ -189,12 +204,12 @@
             this.tbEditName.Location = new System.Drawing.Point(304, 15);
             this.tbEditName.Name = "tbEditName";
             this.tbEditName.Size = new System.Drawing.Size(152, 26);
-            this.tbEditName.TabIndex = 1;
+            this.tbEditName.TabIndex = 2;
             // 
             // lbEditName
             // 
             this.lbEditName.AutoSize = true;
-            this.lbEditName.Location = new System.Drawing.Point(247, 21);
+            this.lbEditName.Location = new System.Drawing.Point(248, 21);
             this.lbEditName.Name = "lbEditName";
             this.lbEditName.Size = new System.Drawing.Size(51, 20);
             this.lbEditName.TabIndex = 0;
@@ -221,55 +236,115 @@
             // 
             this.dgvEmployeeShow.AllowUserToAddRows = false;
             this.dgvEmployeeShow.AllowUserToDeleteRows = false;
+            this.dgvEmployeeShow.AllowUserToResizeColumns = false;
+            this.dgvEmployeeShow.AllowUserToResizeRows = false;
             this.dgvEmployeeShow.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvEmployeeShow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvEmployeeShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployeeShow.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dgvEmployeeShow.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployeeShow.DefaultCellStyle = dataGridViewCellStyle10;
+            this.EId,
+            this.EName,
+            this.ESex,
+            this.EPhone,
+            this.EBDay,
+            this.EAddr});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployeeShow.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvEmployeeShow.EnableHeadersVisualStyles = false;
             this.dgvEmployeeShow.Location = new System.Drawing.Point(12, 179);
+            this.dgvEmployeeShow.MultiSelect = false;
             this.dgvEmployeeShow.Name = "dgvEmployeeShow";
             this.dgvEmployeeShow.ReadOnly = true;
             this.dgvEmployeeShow.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployeeShow.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployeeShow.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvEmployeeShow.RowHeadersVisible = false;
             this.dgvEmployeeShow.RowHeadersWidth = 42;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Transparent;
-            this.dgvEmployeeShow.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Red;
+            this.dgvEmployeeShow.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvEmployeeShow.RowTemplate.Height = 23;
+            this.dgvEmployeeShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployeeShow.Size = new System.Drawing.Size(588, 234);
             this.dgvEmployeeShow.TabIndex = 1;
+            this.dgvEmployeeShow.SelectionChanged += new System.EventHandler(this.dgvEmployeeShow_SelectionChanged);
+            // 
+            // EId
+            // 
+            this.EId.DataPropertyName = "EId";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Transparent;
+            this.EId.DefaultCellStyle = dataGridViewCellStyle13;
+            this.EId.FillWeight = 80F;
+            this.EId.HeaderText = "工号";
+            this.EId.Name = "EId";
+            this.EId.ReadOnly = true;
+            this.EId.Width = 80;
+            // 
+            // EName
+            // 
+            this.EName.DataPropertyName = "EName";
+            this.EName.HeaderText = "姓名";
+            this.EName.Name = "EName";
+            this.EName.ReadOnly = true;
+            // 
+            // ESex
+            // 
+            this.ESex.DataPropertyName = "ESex";
+            this.ESex.FillWeight = 80F;
+            this.ESex.HeaderText = "性别";
+            this.ESex.Name = "ESex";
+            this.ESex.ReadOnly = true;
+            this.ESex.Width = 65;
+            // 
+            // EPhone
+            // 
+            this.EPhone.DataPropertyName = "EPhone";
+            this.EPhone.HeaderText = "电话";
+            this.EPhone.Name = "EPhone";
+            this.EPhone.ReadOnly = true;
+            // 
+            // EBDay
+            // 
+            this.EBDay.DataPropertyName = "EBDay";
+            this.EBDay.HeaderText = "出生日期";
+            this.EBDay.Name = "EBDay";
+            this.EBDay.ReadOnly = true;
+            this.EBDay.Width = 120;
+            // 
+            // EAddr
+            // 
+            this.EAddr.DataPropertyName = "EAddr";
+            this.EAddr.HeaderText = "家庭地址";
+            this.EAddr.Name = "EAddr";
+            this.EAddr.ReadOnly = true;
+            this.EAddr.Width = 120;
             // 
             // btnSubmit
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.Transparent;
+            this.btnSubmit.Enabled = false;
             this.btnSubmit.Location = new System.Drawing.Point(654, 22);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(95, 53);
-            this.btnSubmit.TabIndex = 2;
+            this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "提交";
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // lbQueryId
             // 
@@ -288,7 +363,8 @@
             this.tbQueryId.Location = new System.Drawing.Point(59, 27);
             this.tbQueryId.Name = "tbQueryId";
             this.tbQueryId.Size = new System.Drawing.Size(112, 26);
-            this.tbQueryId.TabIndex = 4;
+            this.tbQueryId.TabIndex = 0;
+            this.tbQueryId.TextChanged += new System.EventHandler(this.tbQueryId_TextChanged);
             // 
             // lbQueryName
             // 
@@ -307,7 +383,8 @@
             this.tbQueryName.Location = new System.Drawing.Point(59, 65);
             this.tbQueryName.Name = "tbQueryName";
             this.tbQueryName.Size = new System.Drawing.Size(112, 26);
-            this.tbQueryName.TabIndex = 4;
+            this.tbQueryName.TabIndex = 1;
+            this.tbQueryName.TextChanged += new System.EventHandler(this.tbQueryName_TextChanged);
             // 
             // groupBox1
             // 
@@ -326,15 +403,17 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Enabled = false;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCancel.Location = new System.Drawing.Point(654, 96);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 53);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnImport
             // 
@@ -342,9 +421,10 @@
             this.btnImport.Location = new System.Drawing.Point(621, 291);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(84, 41);
-            this.btnImport.TabIndex = 2;
+            this.btnImport.TabIndex = 0;
             this.btnImport.Text = "导入";
             this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnAdd
             // 
@@ -352,9 +432,10 @@
             this.btnAdd.Location = new System.Drawing.Point(708, 291);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(84, 41);
-            this.btnAdd.TabIndex = 2;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "添加";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -362,9 +443,10 @@
             this.btnDelete.Location = new System.Drawing.Point(708, 349);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 41);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -375,51 +457,7 @@
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Transparent;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column1.FillWeight = 80F;
-            this.Column1.HeaderText = "工号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "姓名";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 80F;
-            this.Column3.HeaderText = "性别";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 65;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "电话";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "出生日期";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 120;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "家庭地址";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 120;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FormMain
             // 
@@ -443,6 +481,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "员工信息管理系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.gbEmployeeEdit.ResumeLayout(false);
             this.gbEmployeeEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditPhoto)).EndInit();
@@ -482,12 +521,13 @@
         private System.Windows.Forms.DateTimePicker dtpEditBDay;
         private System.Windows.Forms.RadioButton rbtnEditWoman;
         private System.Windows.Forms.RadioButton rbtnEditMan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btnEditPhotoAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EBDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EAddr;
     }
 }
 
