@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-
+using Common;
 using DAS;
 using Models;
-using Common;
 
 namespace EmployeeManager {
     public partial class FormMain : Form {
         private string fileName = "";
         private string directoryName = "./img";
         private string photoPath = "";
-        private List<Employee> employeeList = new List<Employee>();
+        private List<Employee> employeeList = null;
         private List<Employee> employeeQueryList = new List<Employee>();
         private EmployeeService employeeService = new EmployeeService();
         private int flag = 0; // 0修改 1添加
@@ -44,44 +40,52 @@ namespace EmployeeManager {
         }
         // 按工号查询
         private void tbQueryId_TextChanged(object sender, EventArgs e) {
-            employeeQueryList.Clear(); // 清空员工列表
-            tbQueryName.Text = "";
-
-            employeeQueryList = employeeService.GetAllEmployeeById(tbQueryId.Text.ToString(), employeeList);
-
-            if (tbQueryId.Text != "") {
-                dgvEmployeeShow.DataSource = null; // 解除datagridview数据绑定
-                dgvEmployeeShow.DataSource = employeeQueryList;
-
+            if (employeeList == null) {
+                MessageBox.Show("请先导入数据再查询！", "出错啦！", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else {
-                dgvEmployeeShow.DataSource = employeeList;
-            }
+                employeeQueryList.Clear(); // 清空员工列表
+                tbQueryName.Text = "";
 
-            if (employeeQueryList.Count != 0) {
-                // 将表格中第一行数据默认显示到编辑区
-                Employee employee = employeeService.GetEmployeeById(dgvEmployeeShow.Rows[0].Cells[0].Value.ToString(), employeeList);
-                LoadDataDetail(employee);
+                employeeQueryList = employeeService.GetAllEmployeeById(tbQueryId.Text.ToString(), employeeList);
+
+                if (tbQueryId.Text != "") {
+                    dgvEmployeeShow.DataSource = null; // 解除datagridview数据绑定
+                    dgvEmployeeShow.DataSource = employeeQueryList;
+
+                } else {
+                    dgvEmployeeShow.DataSource = employeeList;
+                }
+
+                if (employeeQueryList.Count != 0) {
+                    // 将表格中第一行数据默认显示到编辑区
+                    Employee employee = employeeService.GetEmployeeById(dgvEmployeeShow.Rows[0].Cells[0].Value.ToString(), employeeList);
+                    LoadDataDetail(employee);
+                }
             }
         }
 
         // 按姓名查询
         private void tbQueryName_TextChanged(object sender, EventArgs e) {
-            employeeQueryList.Clear(); // 清空员工列表
-            tbQueryId.Text = "";
-            employeeQueryList = employeeService.GetAllEmployeeByName(tbQueryName.Text.ToString(), employeeList);
-
-            if (tbQueryName.Text != "") {
-                dgvEmployeeShow.DataSource = null; // 解除datagridview数据绑定
-                dgvEmployeeShow.DataSource = employeeQueryList;
-
+            if (employeeList == null) {
+                MessageBox.Show("请先导入数据再查询！", "出错啦！", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else {
-                dgvEmployeeShow.DataSource = employeeList;
-            }
+                employeeQueryList.Clear(); // 清空员工列表
+                tbQueryId.Text = "";
+                employeeQueryList = employeeService.GetAllEmployeeByName(tbQueryName.Text.ToString(), employeeList);
 
-            if (employeeQueryList.Count != 0) {
-                // 将表格中第一行数据默认显示到编辑区
-                Employee employee = employeeService.GetEmployeeById(dgvEmployeeShow.Rows[0].Cells[0].Value.ToString(), employeeList);
-                LoadDataDetail(employee);
+                if (tbQueryName.Text != "") {
+                    dgvEmployeeShow.DataSource = null; // 解除datagridview数据绑定
+                    dgvEmployeeShow.DataSource = employeeQueryList;
+
+                } else {
+                    dgvEmployeeShow.DataSource = employeeList;
+                }
+
+                if (employeeQueryList.Count != 0) {
+                    // 将表格中第一行数据默认显示到编辑区
+                    Employee employee = employeeService.GetEmployeeById(dgvEmployeeShow.Rows[0].Cells[0].Value.ToString(), employeeList);
+                    LoadDataDetail(employee);
+                }
             }
         }
 
@@ -167,6 +171,10 @@ namespace EmployeeManager {
             // 将表格中第一行数据默认显示到编辑区
             Employee employee = employeeService.GetEmployeeById(dgvEmployeeShow.Rows[0].Cells[0].Value.ToString(), employeeList);
             LoadDataDetail(employee);
+
+            // 清除没有导入数据时查询的文本框内容
+            tbQueryId.Text = "";
+            tbQueryName.Text = "";
         }
 
         // 添加
